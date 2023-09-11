@@ -22,12 +22,16 @@
 
 \begin{frame}{Proposed Work}
 
+    Divided into:
     \begin{itemize}
-        \item .
         \item Orbit study
+        \vspace{0.1cm}
         \item Communication study
+        \vspace{0.1cm}
         \item Required power budget
+        \vspace{0.1cm}
         \item Possible technical solutions
+        \vspace{0.1cm}
         \item Proposed experiment
     \end{itemize}
 
@@ -51,21 +55,112 @@
 
 \end{frame}
 
-\begin{frame}{Orbit Analysis}
+%\begin{frame}{Orbit Analysis}
+%
+%    \begin{figure}[!ht]
+%        \begin{center}
+%            \includegraphics[width=0.8\columnwidth]{figures/lifetime}
+%        \end{center}
+%    \end{figure}
+%
+%\end{frame}
+
+\begin{frame}{Communication Study: Link Budget Analysis}
+
+    \begin{itemize}
+        \item Conditions:
+            \begin{itemize}
+                \item \textbf{Altitude}: 550 km
+                \vspace{0.1cm}
+                \item \textbf{Elevation}: 0$^{\circ}$ (worst case with the satellite at the horizon)
+                \vspace{0.1cm}
+                \item \textbf{Frequency}: 900 MHz
+                \vspace{0.1cm}
+                \item \textbf{Transmitter power}: 30 dBm (1 W)
+            \end{itemize}
+        \item Results:
+            \begin{itemize}
+                \item \textbf{Free-Space-Path-Loss}: 146.3 $\leq$ FSPL$^{dB}$ $\leq$ 160.2 dB
+                \vspace{0.1cm}
+                \item \textbf{Power at receiver}: $\geq$ -129.2 dBm
+                \vspace{0.1cm}
+                \item \textbf{SNR}: $\geq$ 10.4 dB
+            \end{itemize}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Power Budget: Subsystems' Consumption}
+
+    \begin{table}[!ht]\scriptsize
+        \centering
+        \begin{tabular}{lcccc}
+            \toprule[1.5pt]
+            \textbf{Subsystem} & \textbf{Manufacturer} & \textbf{Model} & \textbf{Consumption [mW]} \\
+            \midrule
+            OBDH     & GomSpace & NanoMind A3200 & 170 \\
+            EPS      & GomSpace & NanoPower P60  & 160 \\
+            Battery  & GomSpace & NanoPower BP4  & 50-7000 \\
+            TMTC     & GomSpace & NanoCom AX100  & 300-3300 \\
+            Antenna  & ISISpace & AntS           & 35-1800 \\
+            ADCS     & ISISpace & iMTQ           & 175-1200 \\
+            GNSS Transmitter & \multicolumn{2}{c}{Custom model} & 4720 \\
+            \bottomrule[1.5pt]
+        \end{tabular}
+        \label{tab:power-budget-subsystems}
+    \end{table}
+
+\end{frame}
+
+\begin{frame}{Power Budget: Mean Power Consumption}
+
+    \begin{table}[!ht]\scriptsize
+        \centering
+        \begin{tabular}{lcc}
+            \toprule[1.5pt]
+            \textbf{Subsystem} & \textbf{Duty Cycle [\%]} & \textbf{Power [mW]} \\
+            \midrule
+            OBDH                  & 100 & 170 \\
+            TMTC (RX)             & 95  & 300 \\
+            TMTC (TX)             & 5   & 3300 \\
+            EPS                   & 100 & 160 \\
+            Battery (idle)        & 90  & 50 \\
+            Battery (heater full) & 10  & 7000 \\
+            ADCS (idle)           & 90  & 175 \\
+            ADCS (full actuation) & 10  & 1200 \\
+            Antenna (deployment)  & 0   & 1800 \\
+            Antenna (deployed)    & 100 & 35 \\
+            Payload GNSS          & 100 & 4720 \\
+            \cmidrule{2-3}
+            Satellite             & \multicolumn{2}{c}{$\cong$ 6526 mW} \\
+            \bottomrule[1.5pt]
+        \end{tabular}
+        \label{tab:power-duty-cycle}
+    \end{table}
+
+\end{frame}
+
+\begin{frame}{Power Budget: Input Power}
+
+    \begin{itemize}
+        \item Simulated input power for a 6U CubeSat and a solar irradiance of 1367 W/m$^{2}$:
+    \end{itemize}
 
     \begin{figure}[!ht]
         \begin{center}
-            \includegraphics[width=0.8\columnwidth]{figures/lifetime}
+            \includegraphics[width=0.7\columnwidth]{figures/sim-input-power-3u}
         \end{center}
     \end{figure}
 
 \end{frame}
 
-\begin{frame}{Communication Study}
+\begin{frame}{Power Budget: Preliminary Results}
 
-\end{frame}
-
-\begin{frame}{Required Power Budget}
+    \begin{itemize}
+        \item For the giving condition, considering a satellite without mechanisms for solar panel deployment, the minimum CubeSat size from the power requirements perspective would be 6U
+        \vspace{0.2cm}
+        \item Considering the possibility of using mechanisms for panel deployment, the use of a 3U CubeSat would also be possible
+    \end{itemize}
 
 \end{frame}
 
@@ -117,7 +212,7 @@
             MCXO                 & $10^{-8}$ to $10^{-7}$   & 1-3 PPM                                   & 200 $\mu$W & 100 g \\
             OCXO (5 to 10 MHz)   & $10^{-8}$                & $2 \times 10^{-8}$ to $2 \times 10^{-7}$  & \multirow{2}{*}{1-3 W} & \multirow{2}{*}{200-500 g} \\
             OCXO (15 to 100 MHz) & $5 \times 10^{-7}$       & $5 \times 10^{-10}$ to $5 \times 10^{-9}$ &            &  \\
-            RbXO                 & $10^{-9}$                & $5 \times 10^{-10}$ to $5 \times 10^{-9}$ & 6-12 W & 1,5-2,5 kg\footnote{There are miniaturized versions.} \\
+            RbXO                 & $10^{-9}$                & $5 \times 10^{-10}$ to $5 \times 10^{-9}$ & 6-12 W & 1,5-2,5 kg \\
             Cs                   & $10^{-12}$ to $10^{-11}$ & $10^{-12}$ to $10^{-11}$                  & 25-40 W & 10-20 kg \\
             GPS                  & $4 \times 10^{-8}$ to $10^{-11}$ & $10^{-13}$ & 4 W & 340 g \\
             \bottomrule[1.5pt]
@@ -142,7 +237,7 @@
                 \vspace{0.2cm}
                 \item \textbf{Accuracy}: $\pm 5 \times 10^{-11}$
                 \vspace{0.2cm}
-                \item \textbf{Operating temperature}: -10 to 70$^{\circ}$C
+                \item \textbf{Operating temperature}: -10 to 70 $^{\circ}$C
             \end{itemize}
         \end{column}
         \begin{column}[t]{0.5\textwidth}
