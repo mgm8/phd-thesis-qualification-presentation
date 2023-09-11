@@ -225,7 +225,7 @@
 \begin{frame}{Chip Scale Rubidium Oscillator (RbXO)}
 
     \begin{columns}[t]
-        \begin{column}[t]{0.65\textwidth}
+        \begin{column}[t]{0.68\textwidth}
             \begin{itemize}
                 \item \textbf{Model}: Microchip CSAC-SA-45S
                 \vspace{0.2cm}
@@ -251,19 +251,58 @@
 
 \end{frame}
 
-\begin{frame}{Possible Solutions: Radio transmitters, Antennas and Attitude and Orbit Control}
+\begin{frame}{Possible Solutions: Radio transmitters}
+
+    \begin{itemize}
+        \item One solution to overcome the ionospheric delay problem is to use two different frequencies, which will require the use of two radio transmitters
+        \vspace{0.2cm}
+        \item The use of SDRs is a possible solution for transmitting the signals
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Possible Solutions: Antennas}
+
+    \begin{columns}[t]
+        \begin{column}[t]{0.7\textwidth}
+            \begin{itemize}
+                \item Patch antennas are a suitable option for this kind of system, as they are mechanically simpler and suitable for the CubeSat standard size (considering typical frequencies for GNSS systems)
+                \vspace{0.2cm}
+                \item Depending on the chosen frequency for the system, it is possible that a custom antenna will be required
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.3\textwidth}
+            \begin{figure}[!ht]
+                \begin{center}
+                    \includegraphics[width=\columnwidth]{figures/x-band-patch-array}
+                \end{center}
+            \end{figure}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+\begin{frame}{Possible Solutions: Attitude and Orbit Control}
+
+    \begin{itemize}
+        \item For the attituce control, magnetic and mechanical solutions cane be considered. As example: magnetorequers and reaction wheels
+        \vspace{0.2cm}
+        \item Considering a constellation of satellites, to control the position of the objects and to avoid dead zones with no satellite in sign during the operation, a orbit control system is required (ion thruster-based and/or propellant-based thrusters)
+    \end{itemize}
 
 \end{frame}
 
 \begin{frame}{Proposed Experiment}
 
     \begin{itemize}
-        \item .
+        \item Development of a payload with an embedded atomic clock and radio transmitters for testing the proposed system
+        \vspace{0.5cm}
+        \item This payload is intended to be installed on a future CubeSat mission
     \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Proposed Experiment}
+\begin{frame}{Proposed Experiment: Block Diagram}
 
     \begin{figure}[!ht]
         \begin{center}
@@ -273,7 +312,7 @@
 
 \end{frame}
 
-\begin{frame}{Proposed Experiment}
+\begin{frame}{Proposed Experiment: Block Diagram}
 
     \begin{figure}[!ht]
         \begin{center}
